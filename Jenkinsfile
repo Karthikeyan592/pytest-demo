@@ -1,10 +1,14 @@
 pipeline {
     agent any
-
     stages {
         stage('Checkout') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: 'main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Karthikeyan592/pytest-demo.git']]])
+                checkout scm
+            }
+        }
+        stage('Install Dependencies') {
+            steps {
+                bat 'pip install pytest'
             }
         }
         stage('Build') {
