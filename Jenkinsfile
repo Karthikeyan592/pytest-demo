@@ -9,7 +9,6 @@ pipeline {
         }
         stage('Build') {
             steps {
-                git branch: 'main', url: 'https://github.com/Karthikeyan592/pytest-demo.git'
                 sh 'python3 ops.py'
             }
         }
